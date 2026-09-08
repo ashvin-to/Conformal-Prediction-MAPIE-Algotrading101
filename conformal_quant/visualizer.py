@@ -23,14 +23,14 @@ def plot_prediction_intervals(
 
     fig, ax = plt.subplots(figsize=(11, 5.5))
     ax.plot(np.arange(n), y_true[:n][idx], "ko", markersize=4, label="Ground Truth ($y$)")
-    ax.plot(np.arange(n), y_pred[:n][idx], color="#1f77b4", lw=1.8, label="Point Prediction ($\hat{y}$)")
+    ax.plot(np.arange(n), y_pred[:n][idx], color="#1f77b4", lw=1.8, label=r"Point Prediction ($\hat{y}$)")
     ax.fill_between(
         np.arange(n),
         lower[:n][idx],
         upper[:n][idx],
         color="#38bdf8",
         alpha=0.35,
-        label="Conformal Prediction Band ($1 - \alpha$)",
+        label=r"Conformal Prediction Band ($1 - \alpha$)",
     )
     ax.set_title(title, fontsize=13, fontweight="bold")
     ax.set_xlabel("Sorted Sample Index")

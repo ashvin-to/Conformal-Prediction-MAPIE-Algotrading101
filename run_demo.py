@@ -31,7 +31,7 @@ def run_regression_experiment() -> None:
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
-    reg = ConformalRegressor(confidence_level=0.90, method="plus", cv=5)
+    reg = ConformalRegressor(confidence_level=0.90, cv=5)
     reg.fit(X_train, y_train)
     y_pred, lower, upper = reg.predict_interval(X_test)
 
@@ -67,7 +67,7 @@ def run_classification_experiment() -> None:
     )
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
-    clf = ConformalClassifier(confidence_level=0.90, method="score", cv=5)
+    clf = ConformalClassifier(confidence_level=0.90, cv=5)
     clf.fit(X_train, y_train)
     y_pred, pred_sets = clf.predict_sets(X_test)
 
